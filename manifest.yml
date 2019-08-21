@@ -1,0 +1,11 @@
+applications:
+- name: is-echo-health
+  memory: 2048M
+  path: target/is-echo-health-1.0.0.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git#v4.6
+  services:
+   - appdynamics_${name}
+   - config-repo
+  env:
+    JBP_CONFIG_TOMCAT: '[tomcat: { version: 8.5.+ }]'
+    JBP_CONFIG_OPEN_JDK_JRE: '[jre: { version: 1.8.0_+ }]'
